@@ -1,117 +1,42 @@
-
 package com.example.smartpantrymanager;
 
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class AddIngredientActivity extends AppCompatActivity {
 
-    EditText editItemName;
-    EditText editQuantity;
-    EditText editUnits;
-
-    Button btnAdd;
-    Button btnDelete;
-    Button btnUpdate;
-
-    TextView txtPantryList;
-
+    EditText editName, editQuantity, editUnit;
+    Button btnSave;
     DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_add_ingredient);
 
         dbHelper = new DatabaseHelper(this);
+        editName = findViewById(R.id.edtName);
+        editQuantity = findViewById(R.id.edtQuantity);
+        editUnit = findViewById(R.id.edtUnit);
+        btnSave = findViewById(R.id.btnSave);
 
-        editItemName = findViewById(R.id.editItemName);
-        editQuantity = findViewById(R.id.editQuantity);
-        editUnits = findViewById(R.id.units);
+        btnSave.setOnClickListener(v -> {
+            String name = editName.getText().toString();
+            String qty = editQuantity.getText().toString();
+            String unit = editUnit.getText().toString();
 
-        btnAdd = findViewById(R.id.btnAdd);
-        btnDelete = findViewById(R.id.btnDelete);
-        btnUpdate = findViewById(R.id.btnUpdate);
-
-
-        txtPantryList = findViewById(R.id.txtPantryList);
-        txtPantryList.setText(
-                dbHelper.getAllIngredients()
-        );
-
-
-
-
-        btnAdd.setOnClickListener(v -> {
-            String item = editItemName.getText().toString().trim();
-            String quantity = editQuantity.getText().toString().trim();
-            String unit = editUnits.getText().toString().trim();
-
-
-
-            if (item.isEmpty() || quantity.isEmpty() || unit.isEmpty()) {
-                txtPantryList.setText("Please fill in all fields");
+            if(name.isEmpty()){
+                Toast.makeText(this, "Enter name", Toast.LENGTH_SHORT).show();
                 return;
-
             }
-            dbHelper.addIngredient(item, quantity, unit);
 
-            txtPantryList.setText(
-                    dbHelper.getAllIngredients()
-            );
-
-            editItemName.setText("");
-            editQuantity.setText("");
-            editUnits.setText("");
+            dbHelper.addIngredient(new Ingredient(name, qty, unit));
+            Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
+            finish();
         });
-
-        btnDelete.setOnClickListener(v -> {
-            String item = editItemName.getText().toString().trim();
-
-
-            if (item.isEmpty()) {
-                txtPantryList.setText("Enter the ingredient name to delete");
-                return;
-
-            }
-            dbHelper.deleteIngredient(item);
-
-            txtPantryList.setText(
-                    dbHelper.getAllIngredients()
-            );
-
-            editItemName.setText("");
-            editQuantity.setText("");
-            editUnits.setText("");
-        });
-
-        btnUpdate.setOnClickListener(v -> {
-            String item = editItemName.getText().toString().trim();
-            String quantity = editQuantity.getText().toString().trim();
-            String unit = editUnits.getText().toString().trim();
-
-
-
-            if (item.isEmpty() || quantity.isEmpty() || unit.isEmpty()) {
-                txtPantryList.setText("Please fill in all fields");
-                return;
-
-            }
-            dbHelper.updateIngredient(item, item, quantity, unit);
-
-            txtPantryList.setText(
-                    dbHelper.getAllIngredients()
-            );
-
-            editItemName.setText("");
-            editQuantity.setText("");
-            editUnits.setText("");
-        });
-
-
     }
 }
+
