@@ -4,35 +4,38 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#E3F2FD">
-
+    android:background="#FFF3E0">
+    
     <TextView
+        android:id="@+id/txtRecipeName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Settings"
+        android:text="Recipe Name"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#0D47A1"
-        android:gravity="center"
-        android:background="#90CAF9"
+        android:textColor="#E65100"
+        android:layout_gravity="center"
+        android:background="#FFCC80"
         android:padding="12dp"/>
-
+    
     <TextView
+        android:id="@+id/txtRecipeDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Smart Pantry Manager v1.0\nDeveloper: you\nNotifications: ON"
+        android:text="Ingredients: \n- 2 kg Rice\n- 500g Beans\n\nSteps: \n1. Boil water\n2. Add ingredients\n3. Cook for 20 mins"
         android:textSize="16sp"
         android:layout_marginTop="20dp"
         android:background="#FFFFFF"
         android:padding="16dp"/>
-
+    
     <Button
-        android:id="@+id/btnBackSettings"
+        android:id="@+id/btnDone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Back"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#1976D2"
+        android:text="Done"
+        android:backgroundTint="#FF9800"
         android:layout_marginTop="20dp"/>
+
+        
 
 </LinearLayout>
