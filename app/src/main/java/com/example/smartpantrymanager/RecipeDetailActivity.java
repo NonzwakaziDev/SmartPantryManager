@@ -6,16 +6,18 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-
+//class
 public class RecipeDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //get data
         String name = getIntent().getStringExtra("NAME");
         String ing = getIntent().getStringExtra("ING");
         String steps = getIntent().getStringExtra("STEPS");
 
+        //Screen scroll view
         ScrollView scroll = new ScrollView(this);
         scroll.setBackgroundColor(Color.parseColor("#121212"));
 
@@ -23,10 +25,11 @@ public class RecipeDetailActivity extends AppCompatActivity {
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setPadding(40,40,40,40);
 
+        //text views
         TextView t1 = new TextView(this);
         t1.setText(name);
         t1.setTextSize(28);
-        t1.setTextColor(Color.WHITE); // White on dark
+        t1.setTextColor(Color.WHITE); 
         t1.setPadding(0,0,0,30);
 
         TextView t2 = new TextView(this);
@@ -39,7 +42,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
         TextView t3 = new TextView(this);
         t3.setText("\nSteps:\n" + steps);
         t3.setTextSize(18);
-        t3.setTextColor(Color.parseColor("#E0E0E0")); // light grey on dark = clear
+        t3.setTextColor(Color.parseColor("#E0E0E0")); 
         t3.setPadding(0,40,0,0);
 
         layout.addView(t1);
