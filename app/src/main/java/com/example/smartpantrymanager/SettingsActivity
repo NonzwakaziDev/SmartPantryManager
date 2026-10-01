@@ -1,19 +1,103 @@
 package com.example.smartpantrymanager;
 
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
 
 public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
-        Button btnBack = findViewById(R.id.btnBackSettings);
 
-        btnBack.setOnClickListener(v -> finish());
+        SharedPreferences prefs = getSharedPreferences("pantry_settings", MODE_PRIVATE);
+
+        ScrollView scroll = new ScrollView(this);
+        scroll.setBackgroundColor(Color.parseColor("#121212"));
+
+        LinearLayout layout = new LinearLayout(this);
+        layout.setOrientation(LinearLayout.VERTICAL);
+        layout.setPadding(50,50,50,50);
+        scroll.addView(layout);
+
+        // TITLE
+        TextView title = new TextView(this);
+        title.setText("Settings");
+        title.setTextSize(28);
+        title.setTextColor(Color.WHITE);
+        title.setPadding(0,0,0,40);
+        layout.addView(title);
+
+        // SECTION 1
+        TextView s1 = new TextView(this);
+        s1.setText("NOTIFICATIONS");
+        s1.setTextColor(Color.parseColor("#FFCC00"));
+        s1.setTextSize(16);
+        s1.setPadding(0,30,0,15);
+        layout.addView(s1);
+
+        Switch sw1 = new Switch(this);
+        sw1.setText("Expiry Alerts (3 days before)");
+        sw1.setTextColor(Color.BLACK);
+        sw1.setChecked(prefs.getBoolean("expiry_alert", true));
+        sw1.setPadding(40,40,40,40);
+        sw1.setBackgroundColor(Color.WHITE);
+        sw1.setOnCheckedChangeListener((b,c)-> {
+            prefs.edit().putBoolean("expiry_alert", c).apply();
+            Toast.makeText(this, c ? "Alerts ON" : "Alerts OFF", Toast.LENGTH_SHORT).show();
+        });
+        layout.addView(sw1);
+
+        // SECTION 2
+        TextView s2 = new TextView(this);
+        s2.setText("\nUNITS & MATCHING");
+        s2.setTextColor(Color.parseColor("#FFCC00"));
+        s2.setTextSize(16);
+        s2.setPadding(0,30,0,15);
+        layout.addView(s2);
+
+        Switch sw2 = new Switch(this);
+        sw2.setText("Strict Mode (Require ALL ingredients) - Required");
+        sw2.setTextColor(Color.BLACK);
+        sw2.setChecked(true);
+        sw2.setPadding(40,40,40,40);
+        sw2.setBackgroundColor(Color.WHITE);
+        sw2.setBackgroundResource(android.R.drawable.dialog_holo_light_frame);
+        layout.addView(sw2);
+
+        Switch sw3 = new Switch(this);
+        sw3.setText("Use Metric (kg/g)");
+        sw3.setTextColor(Color.BLACK);
+        sw3.setChecked(prefs.getBoolean("metric", true));
+        sw3.setPadding(40,40,40,40);
+        sw3.setBackgroundColor(Color.WHITE);
+        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(-1,-2);
+        p.setMargins(0,20,0,0);
+        sw3.setLayoutParams(p);
+        layout.addView(sw3);
+
+        // SECTION 3
+        TextView s3 = new TextView(this);
+        s3.setText("\nABOUT");
+        s3.setTextColor(Color.parseColor("#FFCC00"));
+        s3.setTextSize(16);
+        s3.setPadding(0,30,0,15);
+        layout.addView(s3);
+
+        TextView about = new TextView(this);
+        about.setText("Smart Pantry Manager v1.0\nOffline SQLite Storage\n15 Recipes Seeded\nHandles tomato/tomatoes, case-insensitive");
+        about.setTextColor(Color.BLACK);
+        about.setBackgroundColor(Color.WHITE);
+        about.setPadding(40,40,40,40);
+        about.setTextSize(16);
+        layout.addView(about);
+
+        setContentView(scroll);
     }
-
 }
