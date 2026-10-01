@@ -5,7 +5,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
+//class
 public class AddIngredientActivity extends AppCompatActivity {
 
     EditText editName, editQuantity, editUnit;
@@ -22,7 +22,7 @@ public class AddIngredientActivity extends AppCompatActivity {
         editQuantity = findViewById(R.id.edtQuantity);
         editUnit = findViewById(R.id.edtUnit);
         btnSave = findViewById(R.id.btnSave);
-
+//buttons
         btnSave.setOnClickListener(v -> {
             String name = editName.getText().toString().trim();
             String qty = editQuantity.getText().toString().trim();
