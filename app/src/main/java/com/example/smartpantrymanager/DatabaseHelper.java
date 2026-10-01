@@ -4,6 +4,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.ContentValues;
+import java.util.List;
+import java.util.ArrayList;
+import android.database.Cursor;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -55,7 +58,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public String getAllIngredients() {
+    public List<Ingredient> getAllIngredients() {
+        List<Ingredient> list = new ArrayList<>();
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -86,7 +90,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
 
-        return ingredients.toString();
+        return list;
     }
 
     public void deleteIngredient(String name){
