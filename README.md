@@ -2,9 +2,14 @@
 
 Android app to reduce food waste by tracking pantry ingredients and suggesting recipes you can make with only what you have.
 
+Technologies
+Language: Kotlin/Java
+Platform: Android
+IDE: Android Studio
 Database: SQLite
 
 I chose SQLite because it works offline, requires no internet or server, persists data after app closes and is for standard local storage. It is perfect for pantry items and pre-loaded recipes.
+
 
 Features:
 Add, Edit, Delete Pantry ingredients (CRUD)
@@ -21,4 +26,12 @@ Open in Android Studio
 Sync Gradle
 Run on emulator or physical device (android 7.0+)
 
-Video Demo: Link will be added
+Structure:
+/app: main android app module
+/database: SQLite helper & Room entities
+/recipes: 20 Seeded recipes
+/ui: screen: Pantry List, Add Item, Recipes and settings
+
+
+
+Video Demo: https://drive.google.com//file/d/18z3_evF-fgmu6-jTcqJp3X3t9uv3_n9e/view?usp=drivesdk
