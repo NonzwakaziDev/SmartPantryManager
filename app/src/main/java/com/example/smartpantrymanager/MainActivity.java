@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
-
+//class 
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerPantry;
@@ -20,11 +20,13 @@ public class MainActivity extends AppCompatActivity {
     Button btnAddIngredient, btnSuggested, btnDelete, btnUpdate;
     EditText edtActionName;
 
+    //layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //database and views
         dbHelper = new DatabaseHelper(this);
         btnAddIngredient = findViewById(R.id.btnAddIngredient);
         btnSuggested = findViewById(R.id.btnSuggestedRecipes);
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerPantry = findViewById(R.id.RecyclerPantry);
         recyclerPantry.setLayoutManager(new LinearLayoutManager(this));
 
+        //buttons
         btnAddIngredient.setOnClickListener(v -> {
             startActivity(new Intent(this, AddIngredientActivity.class));
         });
@@ -45,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, SettingsActivity.class));
         });
 
-
-        
         btnDelete.setOnClickListener(v -> {
             String name = edtActionName.getText().toString().trim();
             if(name.isEmpty()){
