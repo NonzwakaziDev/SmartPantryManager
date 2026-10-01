@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,48 +10,44 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Smart Pantry Manager"
-        android:textSize="24sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         android:textColor="#2E7D32"
         android:gravity="center"
         android:layout_marginBottom="20dp"/>
 
     <Button
-        android:id="@+id/btnAddIngredient"
+        android:id="@+id/btnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add Ingredient"
         android:textColor="#FFFFFF"
         android:backgroundTint="#2ECC71"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="12dp"/>
 
     <Button
-        android:id="@+id/btnSuggestedRecipes"
+        android:id="@+id/btnSuggested"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="View Suggested Recipes"
         android:textColor="#FFFFFF"
-        android:backgroundTint="#E67E22"
-        android:layout_marginBottom="0dp"/>
+        android:backgroundTint="#EF6C00"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Your Pantry"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#555555"
-        android:layout_marginTop="20dp"
-        android:textSize="16sp"/>
+        android:textColor="#333333"
+        android:layout_marginBottom="10dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerPantry"
+    <ListView
+        android:id="@+id/listPantry"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF" />
 
 </LinearLayout>
-
-
-
-
-
