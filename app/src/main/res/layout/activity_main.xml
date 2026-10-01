@@ -15,7 +15,7 @@
         android:textStyle="bold"
         android:textColor="#2E7D32"
         android:gravity="center"
-        android:marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"/>
 
     <Button
         android:id="@+id/btnAddIngredient"
