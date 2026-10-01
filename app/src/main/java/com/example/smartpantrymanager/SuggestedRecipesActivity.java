@@ -13,29 +13,29 @@ import java.util.List;
 
 public class SuggestedRecipesActivity extends AppCompatActivity {
 
-    
+    //recipe model class
     class Recipe {
         String name, fullIngredients, steps;
-        List<String> required; // only the core ingredient names for strict matching
+        List<String> required; 
         Recipe(String n, String full, String s, List<String> r){
             name=n; fullIngredients=full; steps=s; required=r;
         }
     }
-
+//screen setup
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         
         ScrollView scroll = new ScrollView(this);
-        scroll.setBackgroundColor(Color.parseColor("#121212")); // DARK background like your main screen
+        scroll.setBackgroundColor(Color.parseColor("#121212")); 
 
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setPadding(40,40,40,40);
         scroll.addView(layout);
 
-        
+        //Title+Database
         TextView title = new TextView(this);
         title.setText("Suggested Recipes\nOnly shows what you CAN make");
         title.setTextSize(22);
@@ -43,7 +43,6 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
         title.setPadding(0,0,0,30);
         layout.addView(title);
 
-        
         DatabaseHelper db = new DatabaseHelper(this);
         List<Ingredient> pantry = db.getAllIngredients();
         List<String> pantryNormalized = new ArrayList<>();
@@ -51,17 +50,16 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
             String n = i.getName().toLowerCase().trim();
             if(n.endsWith("s")) n = n.substring(0, n.length()-1); // plural -> singular
             pantryNormalized.add(n);
-            pantryNormalized.add(i.getName().toLowerCase().trim()); // also keep original
+            pantryNormalized.add(i.getName().toLowerCase().trim()); 
         }
 
-        
+        //recipe list
         List<Recipe> allRecipes = new ArrayList<>();
         allRecipes.add(new Recipe("Fried Rice", "2 cups Rice\n1 Egg\n2 tbsp Cooking oil\n1 tsp Salt", "1. Boil rice\n2. Fry with oil\n3. Add egg", Arrays.asList("rice", "egg")));
         allRecipes.add(new Recipe("Maize Porridge", "2 cups Maize Meal\n3 cups Water\n1 tsp Salt", "1. Boil water\n2. Add maize meal\n3. Stir 20 mins", Arrays.asList("maize meal")));
         allRecipes.add(new Recipe("Boiled Eggs", "3 Eggs\nWater\nSalt", "1. Boil water\n2. Add eggs 10 min", Arrays.asList("egg")));
         allRecipes.add(new Recipe("Tomato Sauce", "3 Tomatoes\n1 Onion\n2 tbsp Cooking oil\nSalt", "1. Chop tomatoes & onion\n2. Fry onion\n3. Add tomatoes", Arrays.asList("tomato", "onion")));
         allRecipes.add(new Recipe("Chicken Skew", "500g Chicken\n2 Potatoes\nOil & Spice", "1. Cut and skewer\n2. Grill 15 mins", Arrays.asList("chicken", "potato")));
-        // Add 10 more quickly for the 15 minimum - they use pantry names you have
         allRecipes.add(new Recipe("Beef Skew", "500g Beef\n1 Onion", "Grill", Arrays.asList("beef", "onion")));
         allRecipes.add(new Recipe("Rice & Beans", "1 cup Rice\n1 cup Beans\nSalt", "Boil together", Arrays.asList("rice", "bean")));
         allRecipes.add(new Recipe("Fried Potatoes", "3 Potatoes\nOil\nSalt", "Fry potatoes", Arrays.asList("potato")));
@@ -95,7 +93,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
                 
                 TextView tv = new TextView(this);
                 tv.setText("✅ " + r.name + "\nNeeds: " + r.required.toString() + "\nTap for details >");
-                tv.setTextColor(Color.BLACK); // CLEAR BLACK TEXT
+                tv.setTextColor(Color.BLACK); 
                 tv.setBackgroundColor(Color.WHITE);
                 tv.setTextSize(16);
                 tv.setPadding(40,40,40,40);
@@ -119,7 +117,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
         if(countShown == 0){
             TextView empty = new TextView(this);
             empty.setText("No recipes match your pantry yet - add more ingredients\n\nYou have: " + pantryNormalized.toString());
-            empty.setTextColor(Color.parseColor("#FFCC00")); // YELLOW for warning, very visible
+            empty.setTextColor(Color.parseColor("#FFCC00")); 
             empty.setTextSize(18);
             empty.setPadding(30,30,30,30);
             empty.setBackgroundColor(Color.parseColor("#333333"));
