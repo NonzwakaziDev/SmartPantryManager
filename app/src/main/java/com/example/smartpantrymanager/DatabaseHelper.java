@@ -7,13 +7,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
-
+//class and database name
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "PantryDB";
     private static final int DATABASE_VERSION = 6;
     private static final String TABLE_NAME = "ingredients";
-
+//creating table
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -27,7 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + "unit TEXT)";
         db.execSQL(CREATE_TABLE);
     }
-
+//upgradind
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
