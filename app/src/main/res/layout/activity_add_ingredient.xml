@@ -22,6 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Ingredient Name"
+        android:textColor="#222222"
+        android:textColorHint="#8A000000"
         android:inputType="textCapWords"/>
 
     <EditText
@@ -29,12 +31,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Quantity"
+        android:textColor="#222222"
+        android:textColorHint="#8A000000"
         android:inputType="numberDecimal"/>
 
     <EditText
         android:id="@+id/edtUnit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#222222"
+        android:textColorHint="#8A000000"
         android:hint="Unit (kg, litres, pieces)"/>
 
     <Button
