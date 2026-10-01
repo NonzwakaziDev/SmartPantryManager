@@ -34,7 +34,7 @@ public class SettingsActivity extends AppCompatActivity {
         title.setPadding(0,0,0,40);
         layout.addView(title);
 
-        // SECTION 1
+        
         TextView s1 = new TextView(this);
         s1.setText("NOTIFICATIONS");
         s1.setTextColor(Color.parseColor("#FFCC00"));
@@ -54,7 +54,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
         layout.addView(sw1);
 
-        // SECTION 2
+        
         TextView s2 = new TextView(this);
         s2.setText("\nUNITS & MATCHING");
         s2.setTextColor(Color.parseColor("#FFCC00"));
@@ -82,7 +82,7 @@ public class SettingsActivity extends AppCompatActivity {
         sw3.setLayoutParams(p);
         layout.addView(sw3);
 
-        // SECTION 3
+        
         TextView s3 = new TextView(this);
         s3.setText("\nABOUT");
         s3.setTextColor(Color.parseColor("#FFCC00"));
