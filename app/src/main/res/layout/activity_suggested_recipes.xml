@@ -1,41 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width ="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#E8F5E9">
+    android:background="#E8F5E9"
+    android:padding="16dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Suggested Recipes"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
+        android:background="#81C784"
         android:gravity="center"
-        android:background="#A5D6A7"
-        android:padding="12dp"/>
+        android:padding="20dp"/>
 
-    <ListView
-        android:id="@+id/listRecipes"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerSuggestedRecipes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:background="#212121"
         android:layout_marginTop="16dp"
-        android:background="#FFFFFF"/>
+        android:padding="8dp" />
 
     <Button
         android:id="@+id/btnBack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Back"
-        android:textColor="#FFFFFF"
         android:backgroundTint="#4CAF50"
-        android:layout_marginTop="10dp"/>
-
-
-
-
-
+        android:layout_marginTop="16dp"/>
 </LinearLayout>
