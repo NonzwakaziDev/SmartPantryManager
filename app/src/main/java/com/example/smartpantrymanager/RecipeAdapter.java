@@ -7,9 +7,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
-
+//class
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
-    List<String> recipes;
+    List<String> recipes;//list of recipes
     public RecipeAdapter(List<String> recipes){ this.recipes = recipes; }
 
     @NonNull
@@ -26,6 +26,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         holder.textView.setPadding(20, 30, 20, 30);
     }
 
+    //view holder
     @Override
     public int getItemCount() { return recipes.size(); }
 
