@@ -13,7 +13,7 @@ import java.util.List;
 
 public class SuggestedRecipesActivity extends AppCompatActivity {
 
-    // Simple Recipe model inside activity so you don't need new files
+    
     class Recipe {
         String name, fullIngredients, steps;
         List<String> required; // only the core ingredient names for strict matching
@@ -26,7 +26,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Root scroll
+        
         ScrollView scroll = new ScrollView(this);
         scroll.setBackgroundColor(Color.parseColor("#121212")); // DARK background like your main screen
 
@@ -35,7 +35,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
         layout.setPadding(40,40,40,40);
         scroll.addView(layout);
 
-        // TITLE - WHITE on DARK so it's clear
+        
         TextView title = new TextView(this);
         title.setText("Suggested Recipes\nOnly shows what you CAN make");
         title.setTextSize(22);
@@ -43,7 +43,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
         title.setPadding(0,0,0,30);
         layout.addView(title);
 
-        // Get pantry as lower case list for robust matching (fixes tomato/tomatoes, unit differences)
+        
         DatabaseHelper db = new DatabaseHelper(this);
         List<Ingredient> pantry = db.getAllIngredients();
         List<String> pantryNormalized = new ArrayList<>();
@@ -54,7 +54,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
             pantryNormalized.add(i.getName().toLowerCase().trim()); // also keep original
         }
 
-        // --- 15 RECIPES SEEDED (as required page 3) ---
+        
         List<Recipe> allRecipes = new ArrayList<>();
         allRecipes.add(new Recipe("Fried Rice", "2 cups Rice\n1 Egg\n2 tbsp Cooking oil\n1 tsp Salt", "1. Boil rice\n2. Fry with oil\n3. Add egg", Arrays.asList("rice", "egg")));
         allRecipes.add(new Recipe("Maize Porridge", "2 cups Maize Meal\n3 cups Water\n1 tsp Salt", "1. Boil water\n2. Add maize meal\n3. Stir 20 mins", Arrays.asList("maize meal")));
@@ -74,7 +74,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
         allRecipes.add(new Recipe("Beef Stew", "Beef\nPotato\nTomato", "Stew 30 mins", Arrays.asList("beef", "potato", "tomato")));
 
         int countShown = 0;
-        // --- STRICT-MATCHING LOGIC (Page 4) ---
+        
         for(Recipe r : allRecipes){
             boolean canMake = true;
             for(String need : r.required){
@@ -92,7 +92,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
 
             if(canMake){
                 countShown++;
-                // CARD - WHITE background, BLACK text for high visibility
+                
                 TextView tv = new TextView(this);
                 tv.setText("✅ " + r.name + "\nNeeds: " + r.required.toString() + "\nTap for details >");
                 tv.setTextColor(Color.BLACK); // CLEAR BLACK TEXT
@@ -115,7 +115,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
             }
         }
 
-        // FEEDBACK WHEN ZERO MATCH (Required page 4)
+        
         if(countShown == 0){
             TextView empty = new TextView(this);
             empty.setText("No recipes match your pantry yet - add more ingredients\n\nYou have: " + pantryNormalized.toString());
