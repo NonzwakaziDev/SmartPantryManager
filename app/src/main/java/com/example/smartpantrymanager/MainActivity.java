@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // DELETE WORKS NOW
+        
         btnDelete.setOnClickListener(v -> {
             String name = edtActionName.getText().toString().trim();
             if(name.isEmpty()){
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             refreshPantry();
         });
 
-        // UPDATE WORKS NOW
+        
         btnUpdate.setOnClickListener(v -> {
             String oldName = edtActionName.getText().toString().trim();
             if(oldName.isEmpty()){
