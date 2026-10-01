@@ -12,12 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SettingsActivity extends AppCompatActivity {
 
+// onCreate + preferences
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         SharedPreferences prefs = getSharedPreferences("pantry_settings", MODE_PRIVATE);
 
+// screen scoll view
         ScrollView scroll = new ScrollView(this);
         scroll.setBackgroundColor(Color.parseColor("#121212"));
 
@@ -34,7 +36,7 @@ public class SettingsActivity extends AppCompatActivity {
         title.setPadding(0,0,0,40);
         layout.addView(title);
 
-        
+        // switch cases for expiry alerts
         TextView s1 = new TextView(this);
         s1.setText("NOTIFICATIONS");
         s1.setTextColor(Color.parseColor("#FFCC00"));
