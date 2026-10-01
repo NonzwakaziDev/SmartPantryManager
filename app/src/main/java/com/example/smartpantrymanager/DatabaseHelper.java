@@ -150,4 +150,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return exists;
     }
+    public void addIngredient(Ingredient ingredient) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("name", ingredient.getName());
+        values.put("quantity", ingredient.getQuantity());
+        values.put("unit", ingredient.getUnit());
+        db.insert("ingredients", null, values);
+        db.close();
+    }
+
+    public List<Ingredient> getAllIngredients() {
+        List<Ingredient> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM ingredients", null);
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                String qty = cursor.getString(2);
+                String unit = cursor.getString(3);
+                list.add(new Ingredient(id, name, qty, unit));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return list;
+    }
+
 }
