@@ -24,9 +24,9 @@ public class AddIngredientActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.btnSave);
 
         btnSave.setOnClickListener(v -> {
-            String name = editName.getText().toString();
-            String qty = editQuantity.getText().toString();
-            String unit = editUnit.getText().toString();
+            String name = editName.getText().toString().trim();
+            String qty = editQuantity.getText().toString().trim();
+            String unit = editUnit.getText().toString().trim();
 
             if(name.isEmpty()){
                 Toast.makeText(this, "Enter name", Toast.LENGTH_SHORT).show();
