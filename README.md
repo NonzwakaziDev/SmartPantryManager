@@ -34,4 +34,4 @@ Structure:
 
 
 
-Video Demo: https://drive.google.com//file/d/18z3_evF-fgmu6-jTcqJp3X3t9uv3_n9e/view?usp=drivesdk
+Video Demo: https://drive.google.com/file/d/1UbdIC7-Wz7k4vnJCRocMF4Y2PIwRZq3L/view?usp=drive_link
